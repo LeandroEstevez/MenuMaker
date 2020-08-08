@@ -18,13 +18,21 @@ public class MenuMaker {
         
         Menu menu = new Menu();
         
-        menu.addOption("Buy");
+        String[] options = {"Buy", "Refund", "Deposit", "LOL"};
         
-        menu.addOption("Refund");
+//        menu.addOption("Buy");
+//        
+//        menu.addOption("Refund");
+//        
+//        menu.addOption("Deposit");
+//        
+//        menu.addOption("LOL");
         
-        menu.addOption("Deposit");
-        
-        menu.addOption("LOL");
+        menu.deleteOption();
+        menu.deleteOption();
+        menu.deleteOption();
+        menu.deleteOption();
+        menu.deleteOption();
         
         menu.displayMenu();
         

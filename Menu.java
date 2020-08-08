@@ -5,6 +5,8 @@
  */
 package menumaker;
 
+import java.util.ArrayList;
+
 /**
  * This class displays a Menu of your choice. 
  * You need to add the options that the menu will have.
@@ -13,7 +15,7 @@ package menumaker;
  */
 public class Menu {
     
-    private String[] options = new String[4];
+    private ArrayList<String> options;
     private int optionCounter;
     
     /**
@@ -21,34 +23,111 @@ public class Menu {
      */
     public Menu() {
         
-        options[0] = "1) Add an option";
-        options[1] = "2) Add an option";
-        options[2] = "3) Add an option";
-        options[3] = "4) Add an option";
+        options = new ArrayList<>();
+        
+        options.add("1) Add an option");
+        options.add("2) Add an option");
+        options.add("3) Add an option");
         
         optionCounter = 0;
         
     }
     
     /**
-     * Adds an option to the menu.
+     * Adds an option to the bottom of the menu.
      * @param option a string representing the option added to the menu.
      */
     public void addOption(String option) {
         
         if(optionCounter == 0) {
             
-            for(int i = 0; i < options.length; i++) {
-            
-                options[i] = "";
-            
-            }
+            options.clear();
             
         }
         
+        options.add(option);
+        
         optionCounter++;
         
-        options[optionCounter - 1] = optionCounter + ") " + option;
+    }
+    
+    /**
+     * Adds an option to the bottom of the menu.
+     * @param option a string representing the option added to the menu.
+     * @param index position of the new option.
+     */
+//    public void addOption(String option, int index) {
+//        
+//        if(optionCounter == 0) {
+//            
+//            options.clear();
+//            
+//        }
+//        
+//        if(index != 1 && !options.isEmpty() && index > options.size()) {
+//            
+//        }
+//        
+//        options.add(index - 1, option);
+//        
+//        optionCounter++;
+//        
+//    }
+    
+    /**
+     * Adds options to the menu.
+     * @param optionsArr a string representing the option added to the menu.
+     */
+    public void addArrOptions(String[] optionsArr) {
+        
+        if(optionCounter == 0) {
+            
+            options.clear();
+            
+        }
+        
+        for (String optionsArr1 : optionsArr) {
+            options.add(optionsArr1);
+            optionCounter++;
+        }
+        
+    }
+    
+    /**
+     * Deletes an option of the menu.
+     * @param index position of the option to be deleted
+     */
+    public void deleteOption(int index) {
+        
+        options.remove(index - 1);
+        
+        optionCounter--;
+        
+    }
+    
+    /**
+     * Deletes last option added of the menu.
+     */
+    public void deleteOption() {
+        
+        options.remove(options.size() - 1);
+        
+        optionCounter--;
+        
+    }
+    
+    /**
+     * Deletes all options of the menu.
+     */
+    public void clearMenu() {
+        
+        options.clear();
+        
+        options.add("1) Add an option");
+        options.add("2) Add an option");
+        options.add("3) Add an option");
+        
+        optionCounter = 0;
         
     }
     
@@ -57,9 +136,9 @@ public class Menu {
      */
     public void displayMenu() {
         
-        for(int i = 0; i < options.length; i++) {
+        for(int i = 0; i < options.size(); i++) {
             
-            System.out.println(options[i]);
+            System.out.println((i + 1) + ") " + options.get(i));
             
         }
         
