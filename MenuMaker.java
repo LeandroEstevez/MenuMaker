@@ -27,12 +27,16 @@ public class MenuMaker {
 //        menu.addOption("Deposit");
 //        
 //        menu.addOption("LOL");
+
+        menu.addArrOptions(options);
         
         menu.deleteOption();
         menu.deleteOption();
         menu.deleteOption();
         menu.deleteOption();
         menu.deleteOption();
+
+        menu.addOption("Jesus", 0);
         
         menu.displayMenu();
         

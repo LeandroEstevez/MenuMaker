@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class Menu {
     
-    private ArrayList<String> options;
+    private final ArrayList<String> options;
     private int optionCounter;
     
     /**
@@ -52,27 +52,31 @@ public class Menu {
     }
     
     /**
-     * Adds an option to the bottom of the menu.
+     * Adds an option to a specific position.
      * @param option a string representing the option added to the menu.
      * @param index position of the new option.
      */
-//    public void addOption(String option, int index) {
-//        
-//        if(optionCounter == 0) {
-//            
-//            options.clear();
-//            
-//        }
-//        
-//        if(index != 1 && !options.isEmpty() && index > options.size()) {
-//            
-//        }
-//        
-//        options.add(index - 1, option);
-//        
-//        optionCounter++;
-//        
-//    }
+    public void addOption(String option, int index) throws IllegalArgumentException {
+        
+        if(index <= 0 || index > options.size()) {
+            
+            throw new IllegalArgumentException("invalid index");
+            
+        } else {
+            
+            if(optionCounter == 0) {
+            
+                options.clear();
+            
+            }
+            
+            options.add(index - 1, option);
+        
+            optionCounter++;
+            
+        }
+        
+    }
     
     /**
      * Adds options to the menu.
@@ -97,11 +101,31 @@ public class Menu {
      * Deletes an option of the menu.
      * @param index position of the option to be deleted
      */
-    public void deleteOption(int index) {
+    public void deleteOption(int index) throws IllegalArgumentException {
         
-        options.remove(index - 1);
+        if(index <= 0 || index > options.size()) {
+            
+            throw new IllegalArgumentException("invalid index");
+            
+        } else if(optionCounter == 0) {
+            
+            System.out.println("Menu is empty");
+            
+        } else {
+            
+            options.remove(index - 1);
         
-        optionCounter--;
+            optionCounter--;
+            
+            if(optionCounter == 0) {
+                
+                options.add("1) Add an option");
+                options.add("2) Add an option");
+                options.add("3) Add an option");
+                
+            }
+            
+        }
         
     }
     
@@ -110,9 +134,25 @@ public class Menu {
      */
     public void deleteOption() {
         
-        options.remove(options.size() - 1);
+        if(optionCounter == 0) {
+            
+            System.out.println("Menu is empty");
+            
+        } else {
+            
+            options.remove(options.size() - 1);
         
-        optionCounter--;
+            optionCounter--;
+            
+            if(optionCounter == 0) {
+                
+                options.add("1) Add an option");
+                options.add("2) Add an option");
+                options.add("3) Add an option");
+                
+            }
+            
+        }
         
     }
     
